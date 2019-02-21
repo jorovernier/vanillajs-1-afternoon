@@ -4,7 +4,7 @@
 
 # Project Summary
 
-In this project, we will continue to work using vanilla Javascript to manipulate the DOM.
+In this project, we will practice vanilla Javascript DOM manipulation by creating a Tic Tac Toe game.
 
 ## Step 1
 
