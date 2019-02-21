@@ -4,7 +4,7 @@
 
 # Project Summary
 
-The goal of this project is to create a a, we will practice manipulating the DOM using vanilla Javascript and an html file.
+In this project we will continue practicing vanilla Javascript DOM manipulation by creating an editable poker hand.
 
 ## Step 1
 
