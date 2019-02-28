@@ -4,7 +4,7 @@
 
 # Project Summary
 
-In this project we will continue practicing vanilla Javascript DOM manipulation by creating an editable poker hand.
+In this project we will continue practicing vanilla Javascript DOM manipulation by creating an editable poker hand. We will be able to edit the styling (color) of each card through vanilla Javascript to match the color it should be. 
 
 ## Step 1
 
@@ -74,10 +74,10 @@ In this step, we will create input fields that can be used to pass information t
 <body>
   <header>Poker Cards</header>
     <main>
-        <section><span>A</span><span>A</span></section>
-        <section><span>A</span><span>A</span></section>
-        <section><span>A</span><span>A</span></section>
-        <section><span>A</span><span>A</span></section>
+        <section><span>A</span><span>♦</span><span>A</span></section>
+        <section><span>A</span><span>♣</span><span>A</span></section>
+        <section><span>A</span><span>♥</span><span>A</span></section>
+        <section><span>A</span><span>♠</span><span>A</span></section>
     </main>
     <input id='idInput' type="text" placeholder='Set ID'>
     <input id='colorInput' type="text" placeholder='Set Color'>
@@ -133,10 +133,10 @@ In this step, we will target each card using the input fields that we created.
 <body>
   <header>Poker Cards</header>
     <main>
-        <section id='diamonds'><span>A</span><span>A</span></section>
-        <section id='clubs'><span>A</span><span>A</span></section>
-        <section id='hearts'><span>A</span><span>A</span></section>
-        <section id='spades'><span>A</span><span>A</span></section>
+        <section id='diamonds'><span>A</span><span>♦</span><span>A</span></section>
+        <section id='clubs'><span>A</span><span>♣</span><span>A</span></section>
+        <section id='hearts'><span>A</span><span>♥</span><span>A</span></section>
+        <section id='spades'><span>A</span><span>♠</span><span>A</span></section>
     </main>
     <input id='idInput' type="text" placeholder='Set ID'>
     <input id='colorInput' type="text" placeholder='Set Color'>
@@ -177,7 +177,6 @@ In this step, we will create a poker hand of 4 of a kind.
 - Target the card that is being selected in the function `getCard`.
 - Using the information gathered from the second input field, add the `color` style to the targeted card element.
     - Assign the appropriate color to each card (Diamonds/Hearts = red, Clubs/Spades = black).
-- Edit the cards until there is a hand that has 4 of a kind. (All 4 cards of the same rank).
 
 
 ### Solution
