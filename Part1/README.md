@@ -188,6 +188,8 @@ In this step, we will complete the logic that will determine if there is a winne
 
 ### Solution
 
+<strong>Treat this as a toy problem. There are many solutions to finding a winner in Tic-Tac-Toe, so try your best to solve this on your own before looking at the solution below. </strong>
+
 <details>
 <summary><code>/index.js</code> </summary>
 
