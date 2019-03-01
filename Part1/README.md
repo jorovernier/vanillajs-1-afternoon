@@ -35,26 +35,31 @@ In this step, we will create a Javascript file and connect it to our HTML file.
     <link rel="stylesheet" href="./index.css" />
   </head>
   <body>
-    <table>
-      <tr class="row">
-        <td id="0" onclick="play(0)"></td>
-        <td id="1" onclick="play(1)"></td>
-        <td id="2" onclick="play(2)"></td>
-      </tr>
-      <tr class="row">
-        <td id="3" onclick="play(3)"></td>
-        <td id="4" onclick="play(4)"></td>
-        <td id="5" onclick="play(5)"></td>
-      </tr>
-      <tr class="row">
-        <td id="6" onclick="play(6)"></td>
-        <td id="7" onclick="play(7)"></td>
-        <td id="8" onclick="play(8)"></td>
-      </tr>
-    </table>
-    <span>Player </span>
-    <span id="player">X</span>
-    <span>'s turn</span>
+    <nav>
+      <h1>Tic Tac Toe Board!</h1>
+    </nav>
+    <main>
+      <table>
+        <tr class="row">
+          <td id="0" onclick="play(0)"></td>
+          <td id="1" onclick="play(1)"></td>
+          <td id="2" onclick="play(2)"></td>
+        </tr>
+        <tr class="row">
+          <td id="3" onclick="play(3)"></td>
+          <td id="4" onclick="play(4)"></td>
+          <td id="5" onclick="play(5)"></td>
+        </tr>
+        <tr class="row">
+          <td id="6" onclick="play(6)"></td>
+          <td id="7" onclick="play(7)"></td>
+          <td id="8" onclick="play(8)"></td>
+        </tr>
+      </table>
+      <span>Player </span>
+      <span id="player">X</span>
+      <span>'s turn</span>
+    </main>
     <script src="./index.js"></script>
   </body>
 </html>
@@ -181,11 +186,87 @@ In this step, we will complete the logic that will determine if there is a winne
     - There are many different ways to accomplish this task. I encourage you to think through and write out each step that is needed as an outline.
 - If there is no winner, alert the screen that CAT has won the game!
 
+### Solution
+
+<strong>Treat this as a toy problem. There are many solutions to finding a winner in Tic-Tac-Toe, so try your best to solve this on your own before looking at the solution below. </strong>
+
+<details>
+<summary><code>/index.js</code> </summary>
+
+```js
+let board = [];
+
+const play = val => {
+  const player = document.getElementById("player");
+  const element = document.getElementById(val);
+
+  if (player.innerText === "X") {
+    player.innerText = "O";
+    element.innerText = "X";
+    board[val] = "X";
+  } else {
+    player.innerText = "X";
+    element.innerText = "O";
+    board[val] = "O";
+  }
+
+  let sq1 = board[0] // top row:  sq1 | sq2 | sq3
+  let sq2 = board[1] //          -----------------
+  let sq3 = board[2] // mid row   sq4 | sq5 | sq6
+  let sq4 = board[3] //          -----------------
+  let sq5 = board[4] // bot row   sq7 | sq8 | sq9
+  let sq6 = board[5]
+  let sq7 = board[6]
+  let sq8 = board[7]
+  let sq9 = board[8]
+
+  //CHECKS ALL WINNING COMBINATIONS
+  if (sq1 !== undefined && sq1 === sq2 && sq1 === sq3) {
+    window.alert(`${sq1} is the winner`);
+    return
+  } else if (sq4 !== undefined && sq4 === sq5 && sq4 === sq6) {
+    window.alert(`${sq4} is the winner`);
+    return
+  } else if (sq7 !== undefined && sq7 === sq8 && sq7 === board[8]) {
+    window.alert(`${sq7} is the winner`);
+    return
+  } else if (sq1 !== undefined && sq1 === sq4 && sq1 === sq7) {
+    window.alert(`${sq1} is the winner`);
+    return
+  } else if (sq2 !== undefined && sq2 === sq5 && sq2 === sq8) {
+    window.alert(`${sq2} is the winner`);
+    return
+  } else if (sq3 !== undefined && sq3 === sq6 && sq3 === board[8]) {
+    window.alert(`${sq3} is the winner`);
+    return
+  } else if (sq1 !== undefined && sq1 === sq5 && sq1 === board[8]) {
+    window.alert(`${sq1} is the winner`);
+    return
+  } else if (sq7 !== undefined && sq7 === sq5 && sq7 === sq3) {
+    window.alert(`${sq7} is the winner`);
+    return
+  }
+
+  //DETERMINES IF THE BOARD IS FULL, ALERTS WHEN IT IS
+  let boardFull = true
+  for(let i = 0; i <= 8; i++){
+    if(board[i] === undefined){
+        boardFull = false
+    }
+  }
+  if(boardFull === true){
+    window.alert("Cat's game, there is no winner")
+  }
+};
+```
+
+</details>
 
 ## Black Diamond 
 
 1. Create a function that resets the board after each game. This function should be called after the winner is revealed.
 2. Add a button that resets the game when clicked. 
+3. The current logic allows players to override a square that has already been played. Alter the function to remove the ability to override a square. 
 
 
 ## Contributions
