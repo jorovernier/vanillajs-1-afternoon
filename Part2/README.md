@@ -174,7 +174,7 @@ In this step, we will create a poker hand of 4 of a kind.
 ### Instructions
 
 - Open `index.js`.
-- Target the card that is being selected in the function `getCard`.
+- Target the card that is being selected in the function `setCard`.
 - Using the information gathered from the second input field, add the `color` style to the targeted card element.
     - Assign the appropriate color to each card (Diamonds/Hearts = red, Clubs/Spades = black).
 
