@@ -74,9 +74,24 @@ In this step, we will create a Javascript file and connect it to our HTML file.
 In this step, we will reassign value of the "player" from X to O when the board is clicked.
 
 ### Instructions
-- In index.js, create a function called 'play'. This will be activated when any of the boxes are clicked. 
-- In the play function, using 'getElementById', identify the span with the id of 'player'. set that equal to a variable. 
-- Using that variable, reassign the content of that element to be 'O' if it is 'X', or vice-versa. 
+- In index.js, create a function called `play`. We will be invoking this function any time one of 9 boxes are clicked. 
+- In the `play` function, using 'getElementById', select the span in the html with the id of `player`. 
+- Every time this function runs we will want to toggle the `X` to a `O` or vise versa.
+
+<details>
+<summary>
+<code>Detailed Instructions</code>
+</summary>
+
+  - The first thing that we will want to do inside our `index.js` file is to make a function called `play`. This function will not take in any parameters.
+  - Inside the `play` function we need to get the element in the html doc that displays who's turn it currently is. Notice that in the HTML file there is a span surrounding an X with an id of `player`.
+    - To select the span we will need to use `document.getElementById('player')` and store it in a variable called `playerSpan` so we can reference it later in the function.
+  - Now that we have selected the span and stored it to a variable we need to toggle the text inside the html to be either `X` or `O`.
+    - To do this we need to write an if statement that checks if the `playerSpan.innerText` is `===` to `X`.
+    - If `playerSpan.innerText` is equal to `X` then set the the value of `playerSpan.innerText` to `O`.
+    - Else, set the value of `playerSpan.innerText` to `X`, Because if it isn't `X` It should be `O`
+
+</details>
 
 
 ### Solution
@@ -86,15 +101,15 @@ In this step, we will reassign value of the "player" from X to O when the board 
 <summary> <code> /index.js </code> </summary>
 
 ```js
-const play = () => {
-  const player = document.getElementById('player');
+function play() {
+  const playerSpan = document.getElementById('player');
 
-  if (player.innerText === 'X') {
-    player.innerText = 'O';
+  if (playerSpan.innerText === 'X') {
+    playerSpan.innerText = 'O';
   } else {
-    player.innerText = 'X';
+    playerSpan.innerText = 'X';
   }
-};
+}
 ```
 
 </details>
@@ -103,14 +118,25 @@ const play = () => {
 
 ### Summary
 
-In this step, we will assign the player's value to the content of the square that is clicked.
+In this step, we will put either an X or an O as the content of the square that is clicked.
 
 ### Instructions
 - Open `index.js`
-- Add a parameter to the function 'play'.
-- Using the passed in parameter and 'getElementById', grab the information of the element clicked. Set that equal to a variable.
-- Using that variable, assign the square that is clicked to have the value of the current player.
-- For extra practice, add an edge case that will not let you reassign a square that has already been clicked!
+- Add a parameter to the function `play`. The value being passed in is the id of the box that was clicked.
+- Using the passed in parameter and `getElementById` select the box that was clicked and save it to a variable.
+- Using that variable, set the `innerText` of the clicked element to have the value of the current player.
+
+<details>
+<summary>
+<code>Detailed Instructions</code>
+</summary>
+
+- Inside of `index.js` we need to make some more changes to the `play` function.
+- Change the function so that it now takes in a parameter, it can be named what ever we want, but for clarity sake lets call it `clickedId`.
+- The value that gets passed in is the id of the selected element, so lets use that and `document.getElementById(clickedId)` and save it to a variable called `clickedElement`.
+- Inside the if statement lets set the `clickedElement.innerText` equal to `X`. In the else clause, set it to `O`. 
+
+</details>
 
 ### Solution
 
@@ -119,18 +145,18 @@ In this step, we will assign the player's value to the content of the square tha
 <summary> <code> /index.js </code> </summary>
 
 ```js
-const play = (val) => {
-  const player = document.getElementById('player');
-  const element = document.getElementById(val);
+function play(clickedId) {
+  const playerSpan = document.getElementById('player');
+  const clickedElement = document.getElementById(clickedId);
 
-  if (player.innerText === 'X') {
-    player.innerText = 'O';
-    element.innerText = 'X'
+  if (playerSpan.innerText === 'X') {
+    playerSpan.innerText = 'O';
+    clickedElement.innerText = 'X';
   } else {
-    player.innerText = 'X';
-    element.innerText = 'O'
+    playerSpan.innerText = 'X';
+    clickedElement.innerText = 'O';
   }
-};
+}
 ```
 
 </details>
@@ -138,37 +164,53 @@ const play = (val) => {
 ## Step 4
 
 ### Summary
-In this step, we will create an arr that will keep track of the game's progress.
+
+In this step, we will create an array that will keep track of the game's progress.
 
 ### Instructions
-- Define an empty array to a variable at the top of `index.js`.
-- In the play function, add the current player's value ('X' or 'O') to the defined array at the index of the square that was clicked. 
-    - ex. If the first square was clicked by player 'X', we would expect 'X' to be added to the arr at index 0.
+
+- Create a variable at the top of the document, outside the `play` function that is equal to an empty array.
+- In the `play` function, add the current player's value (`X` or `O`) to the array we defined above at the index of `clickedId`. 
+    - ex. If the top left square was clicked by player `X`, we would expect `X` to be added to the array at index 0.
+    - ex. If the very center square was clicked by player `O`, we would expect `O` to be added to the array at index 4.
 - Console.log the array in your function to keep track of it's current value.
 
+<details>
+<summary>
+<code>Detailed Instructions</code>
+</summary>
+
+- Create a variable at the top of the document, outside the `play` function that is equal to an empty array, lets call it `board`.
+  - This array will be keeping track of who played what where and eventually will be how we determine if 3 items are clicked in a row.
+- In the if clause of the `play` function, set the array at the index that is the same as the `clickedId` to a string of `X`. We will do this by typing something like this `board[clickedId] = 'X'`.
+- In the else clause of the `play` function, set the array at the index that is the same as the `clickedId` to a string of `O`. We will do this by typing something like this `board[clickedId] = 'O'`
+
+</details>
+
 ### Solution
+
 
 <details>
 <summary><code>/index.js</code> </summary>
 
 ```js
-let board = []
+const board = [];
 
-const play = (val) => {
-  const player = document.getElementById('player');
-  const element = document.getElementById(val);
+function play(clickedId) {
+  const playerSpan = document.getElementById('player');
+  const clickedElement = document.getElementById(clickedId);
 
-  if (player.innerText === 'X') {
-    player.innerText = 'O';
-    element.innerText = 'X'
-    board[val] = 'X'
+  if (playerSpan.innerText === 'X') {
+    playerSpan.innerText = 'O';
+    clickedElement.innerText = 'X';
+    board[clickedId] = 'X';
   } else {
-    player.innerText = 'X';
-    element.innerText = 'O'
-    board[val] = 'O'
+    playerSpan.innerText = 'X';
+    clickedElement.innerText = 'O';
+    board[clickedId] = '0';
   }
-  console.log(board)
-};
+  console.log(board);
+}
 ```
 
 </details>
@@ -181,10 +223,28 @@ In this step, we will complete the logic that will determine if there is a winne
 
 ### Instructions
 
-- In the play function inside `index.js`, iterate over the array that you created in the previous step. 
 - You will need to determine if there is a winner, and display the winning player to the screen using window.alert.
     - There are many different ways to accomplish this task. I encourage you to think through and write out each step that is needed as an outline.
-- If there is no winner, alert the screen that CAT has won the game!
+    - This most strait forward approach is to check every possible winning combination.
+- If there is no winner and the board is filled with all 9 spots taken up then alert that the game was a "CAT's" game.
+
+
+<details>
+<summary>
+<code>Detailed Instructions</code>
+</summary>
+
+- We will need to be referencing each item of the array pretty often, so to make our typing a bit easier lets store each index of the array into its own variable.
+  - This step is not needed for the function to run properly, but it will make it easier to read.
+  - Lets name each square appropriately by naming each of the 9 variables based off its location in the grid. For instance `topRight`, `topCenter`, and `middleCenter`.
+- We next need to check if a winner has been determined. To do that we need to check every possible winning combination. For instance if `topLeft`, `topMiddle` and `topRight` all equal each other then we know we have a winner, almost. It is possible that all 3 squares have no value so they would all equal `undefiend`, which is not a winner. Because of that we need to first check that one of the squares does not equal `undefined`.
+  - It will look something like this `if (topRight !== undefined && topRight === topCenter && topRight === topRight)`
+  - In the case that all 3 are the same values then we will alert the winner. We can tell who won by looking at any of the 3 values, as what those variables hold is who played in those squares.
+- Finally we need to check if the board has been filled in yet. To do this we are going to write a for loop that loops exactly 9 times, and check each index of the array.
+  - If any of the index of the array contains `undefined`, we know that the array is not yet full. To keep track of this we need to create a variable called `boardFull` that by default is set to true. If we ever see the value `undefined` then we need to set its value to `false`.
+  - After the for loop if the value of `boardFull` is is still true we need to alert, that it was a cats game.
+
+</details>
 
 ### Solution
 
@@ -194,70 +254,79 @@ In this step, we will complete the logic that will determine if there is a winne
 <summary><code>/index.js</code> </summary>
 
 ```js
-let board = [];
+const board = [];
 
-const play = val => {
-  const player = document.getElementById("player");
-  const element = document.getElementById(val);
+function play(clickedId) {
+  const playerSpan = document.getElementById('player');
+  const clickedElement = document.getElementById(clickedId);
 
-  if (player.innerText === "X") {
-    player.innerText = "O";
-    element.innerText = "X";
-    board[val] = "X";
+  if (playerSpan.innerText === 'X') {
+    playerSpan.innerText = 'O';
+    clickedElement.innerText = 'X';
+    board[clickedId] = 'X';
   } else {
-    player.innerText = "X";
-    element.innerText = "O";
-    board[val] = "O";
+    playerSpan.innerText = 'X';
+    clickedElement.innerText = 'O';
+    board[clickedId] = '0';
+  }
+  console.log(board);
+
+  const topLeft = board[0];
+  const topCenter = board[1];
+  const topRight = board[2];
+  const middleLeft = board[3];
+  const middleCenter = board[4];
+  const middleRight = board[5];
+  const bottomLeft = board[6];
+  const bottomCenter = board[7];
+  const bottomRight = board[8];
+
+  // CHECKS ALL WINNING COMBINATIONS
+  if (topLeft !== undefined && topLeft === topCenter && topLeft === topRight) {
+    alert(`${topLeft} is the winner`);
+    return;
+  }
+  if (middleLeft !== undefined && middleLeft === middleCenter && middleLeft === middleRight) {
+    alert(`${middleLeft} is the winner`);
+    return;
+  }
+  if (bottomLeft !== undefined && bottomLeft === bottomCenter && bottomLeft === bottomRight) {
+    alert(`${bottomLeft} is the winner`);
+    return;
+  }
+  if (topLeft !== undefined && topLeft === middleLeft && topLeft === bottomLeft) {
+    alert(`${topLeft} is the winner`);
+    return;
+  }
+  if (topCenter !== undefined && topCenter === middleCenter && topCenter === bottomCenter) {
+    alert(`${topCenter} is the winner`);
+    return;
+  }
+  if (topRight !== undefined && topRight === middleRight && topRight === bottomRight) {
+    alert(`${topRight} is the winner`);
+    return;
+  }
+  if (topLeft !== undefined && topLeft === middleCenter && topLeft === bottomRight) {
+    alert(`${topLeft} is the winner`);
+    return;
+  }
+  if (bottomLeft !== undefined && bottomLeft === middleCenter && bottomLeft === topRight) {
+    alert(`${bottomLeft} is the winner`);
+    return;
   }
 
-  let sq1 = board[0] // top row:  sq1 | sq2 | sq3
-  let sq2 = board[1] //          -----------------
-  let sq3 = board[2] // mid row   sq4 | sq5 | sq6
-  let sq4 = board[3] //          -----------------
-  let sq5 = board[4] // bot row   sq7 | sq8 | sq9
-  let sq6 = board[5]
-  let sq7 = board[6]
-  let sq8 = board[7]
-  let sq9 = board[8]
-
-  //CHECKS ALL WINNING COMBINATIONS
-  if (sq1 !== undefined && sq1 === sq2 && sq1 === sq3) {
-    window.alert(`${sq1} is the winner`);
-    return
-  } else if (sq4 !== undefined && sq4 === sq5 && sq4 === sq6) {
-    window.alert(`${sq4} is the winner`);
-    return
-  } else if (sq7 !== undefined && sq7 === sq8 && sq7 === board[8]) {
-    window.alert(`${sq7} is the winner`);
-    return
-  } else if (sq1 !== undefined && sq1 === sq4 && sq1 === sq7) {
-    window.alert(`${sq1} is the winner`);
-    return
-  } else if (sq2 !== undefined && sq2 === sq5 && sq2 === sq8) {
-    window.alert(`${sq2} is the winner`);
-    return
-  } else if (sq3 !== undefined && sq3 === sq6 && sq3 === board[8]) {
-    window.alert(`${sq3} is the winner`);
-    return
-  } else if (sq1 !== undefined && sq1 === sq5 && sq1 === board[8]) {
-    window.alert(`${sq1} is the winner`);
-    return
-  } else if (sq7 !== undefined && sq7 === sq5 && sq7 === sq3) {
-    window.alert(`${sq7} is the winner`);
-    return
-  }
-
-  //DETERMINES IF THE BOARD IS FULL, ALERTS WHEN IT IS
-  let boardFull = true
-  for(let i = 0; i <= 8; i++){
-    if(board[i] === undefined){
-        boardFull = false
+  // DETERMINES IF THE BOARD IS FULL, ALERTS WHEN IT IS
+  let boardFull = true;
+  for (let i = 0; i <= 8; i++) {
+    if (board[i] === undefined) {
+      boardFull = false;
     }
   }
-  if(boardFull === true){
-    window.alert("Cat's game, there is no winner")
+  if (boardFull === true) {
+    alert("Cat's game, there is no winner");
   }
-};
+}
+
 ```
 
 </details>
@@ -267,6 +336,7 @@ const play = val => {
 1. Create a function that resets the board after each game. This function should be called after the winner is revealed.
 2. Add a button that resets the game when clicked. 
 3. The current logic allows players to override a square that has already been played. Alter the function to remove the ability to override a square. 
+4. Alter the game so that users can not continue to play after a winner has been decided.
 
 
 ## Contributions
