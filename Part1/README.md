@@ -16,7 +16,7 @@ In this step, we will create a Javascript file and connect it to our HTML file.
 
 - Create a file called `index.js`.
 - Connect that script file to the HTML page.
-  - Feel free to console.log a message to test the connect from your script file.
+  - Feel free to `console.log` a message to test the connect from your script file.
 
 
 ### Solution
