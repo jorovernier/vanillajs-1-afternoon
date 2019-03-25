@@ -1,5 +1,5 @@
 # Project Summary
-There are 2 parts to this assignment. In Part 1, you will create a Tic Tac Toe board using HTML, CSS and Javascript and in Part 2 you will create a poker hand. Detailed instructions are included in the folders for each part.
+There are 2 parts to this assignment. In Part 1, you will create a Tic Tac Toe board using HTML, CSS and Javascript. In Part 2 you will create a poker hand. Detailed instructions are included in the folders for each part.
 
 ## Setup
 
