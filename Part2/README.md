@@ -14,10 +14,10 @@ In this step, we will connect a javascript file to our HTML.
 
 ### Instructions
 
-- Create a file in the root of the folder called `index.js`.
+- Create a file in the Part2 folder called `index.js`.
 - Open `index.html`.
-- Add a script tag at the bottom of HTML file and connect the javascript file that was just created. 
-    - Test this connection by adding a console log that says `The house always wins!`
+- Add a script tag at the bottom of `body` tag and connect the `index.js` file we just created. 
+    - Test this connection by adding a console log that says `The house always wins!`. This way we can be sure the file was brought in properly.
 
 
 ### Solution
@@ -60,8 +60,20 @@ In this step, we will create input fields that can be used to pass information t
 - Create 2 input fields under the main tag. The first input will be used to grab the id of each card, the second will be used to assign a style attribute to the card.
 - Assign a specific id to each input.
 - Open `index.js`
-- Using getElementById, grab the information of each input field. Assign a variable to each of those, and console.log the results.
+- Using `getElementById`, grab the information of each input field. Assign a variable to each of those, and `console.log` the results.
 
+<details>
+<summary>
+<code>Detailed Instructions</code>
+</summary>
+
+- We need the ability to add new cards to our hand, and the way were going to do that is by using two input fields. 
+  - Make two input fields that are of type text, each with their own unique id. call the first id `idInput` and the second one `colorInput`.
+  - Lets also give them a place holder value that will appear if nothing is typed into the input boxes. the input with the id of `idInput` should have a place holder of `placeholder='Set ID'`. The other one should have `placeholder='Set Color'`.
+- Inside `index.js` we need to select the two inputs using `getElementById`. Select both inputs and save them into variables so we can access them later.
+  - `console.log` the variables to make sure that you got the correct elements.
+
+</details>
 
 ### Solution
 
@@ -70,7 +82,6 @@ In this step, we will create input fields that can be used to pass information t
 <summary> <code> /index.html </code> </summary>
 
 ```html
-...html
 <body>
   <header>Poker Cards</header>
     <main>
@@ -93,8 +104,8 @@ In this step, we will create input fields that can be used to pass information t
 <summary> <code> /index.js </code> </summary>
 
 ```js
-const id = document.getElementById('idInput');
-const color = document.getElementById('colorInput');
+const idInput = document.getElementById('idInput');
+const colorInput = document.getElementById('colorInput');
 
 console.log(id);
 console.log(color);
@@ -111,15 +122,30 @@ In this step, we will target each card using the input fields that we created.
 ### Instructions
 
 - Open `index.html`.
-- Assign a specific id to each section tag. These are the 4 cards in our hand. Have each id match the corresponding playing card suit (diamonds, clubs, hearts, and spades).
+- Assign a specific id to each `section` tag. These are the 4 cards in our hand. Have each id match the corresponding playing card suit (diamonds, clubs, hearts, and spades).
 - Create a button beneath the input fields. 
 - Assign two attributes to the button: 
     - A specific id.
     - An onclick event called `setCard`.
 - Open `index.js`
-- Using getElementById and the onclick event, create a function that captures the card element based off of the value (id) that is passed into first input field.
-- Console.log the result, and check the developer console.
+- Create a function called `setCard` that captures the card element based off of the value (id) that is passed into first input field. This will be done using a combination of `getElementById` and the `value` property from the first variable we stored form the second step. 
+- `Console.log` the result, and check the developer console.
 
+<details>
+<summary>
+<code>Detailed Instructions</code>
+</summary>
+
+- Inside of `index.html` we need to assign an id to each `section` inside of the `main` tag. The id's should match the suite, that each section is displaying.
+  - The first one should have an id of `diamonds`, second `clubs`, third `hearts`, fourth `spades`.
+- Create a `button` under the `input`s. The button should be given two properties, and id of `btn`, and an `onClick` equal ot `setCard()`. We have not made that function yet, but we will.
+- Inside of `index.js` we need to create a function called `setCard`. This function will not take in any parameters.
+  - We are going to use `getElementById` and `idInput.value` to select the element we want.
+  - `idInput.value` is equal to what ever the user has typed into the input, at the time of the button click. Its type is a string, so we can pass it into the `getElementById()` as the argument since it also expects a string. store the result into a variable called `card`.
+  - Provided the user typed in the id correctly it should return the element with the correct id. Lets `console.log(card)` the results so we can make sure its working properly.
+  - Now type in a card suite into the first input and click the button. You should see a `console.log` of the correct element.
+
+</details>
 
 ### Solution
 
@@ -153,12 +179,12 @@ In this step, we will target each card using the input fields that we created.
 <summary> <code> /index.js </code> </summary>
 
 ```js
-const id = document.getElementById('idInput')
-const color = document.getElementById('colorInput')
+const idInput = document.getElementById('idInput');
+const colorInput = document.getElementById('colorInput');
 
-const setCard = () => {
-    const card = document.getElementById(id.value)
-    console.log(card)
+function setCard() {
+  const card = document.getElementById(idInput.value);
+  console.log(card);
 }
 ```
 
@@ -178,6 +204,16 @@ In this step, we will create a poker hand of 4 of a kind.
 - Using the information gathered from the second input field, add the `color` style to the targeted card element.
     - Assign the appropriate color to each card (Diamonds/Hearts = red, Clubs/Spades = black).
 
+<details>
+<summary>
+<code>Detailed Instructions</code>
+</summary>
+
+- The final thing we are going to do is apply a color to the section using the second input we have set up.
+- using `card.style.color` set it equal to `colorInput.value`, being what ever is typed into the second input.
+- If done properly the text and symbol should change colors appropriately.
+
+</details>
 
 ### Solution
 
@@ -186,13 +222,12 @@ In this step, we will create a poker hand of 4 of a kind.
 <summary> <code> /index.js </code> </summary>
 
 ```js
-const id = document.getElementById('idInput')
-const color = document.getElementById('colorInput')
+const idInput = document.getElementById('idInput');
+const colorInput = document.getElementById('colorInput');
 
-const setCard = () => {
-    const card = document.getElementById(id.value)
-    console.log(card)
-    card.style.color = color.value;
+function setCard() {
+  const card = document.getElementById(idInput.value);
+  card.style.color = colorInput.value;
 }
 ```
 
