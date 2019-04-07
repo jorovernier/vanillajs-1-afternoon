@@ -17,7 +17,7 @@ In this step, we will connect a javascript file to our HTML.
 - Create a file in the Part2 folder called `index.js`.
 - Open `index.html`.
 - Add a script tag at the bottom of `body` tag and connect the `index.js` file we just created. 
-    - Test this connection by adding a console log that says `The house always wins!`. This way we can be sure the file was brought in properly.
+    - Test this connection by adding a `console.log` that says `The house always wins!`. This way we can be sure the file was brought in properly.
 
 
 ### Solution
@@ -107,8 +107,8 @@ In this step, we will create input fields that can be used to pass information t
 const idInput = document.getElementById('idInput');
 const colorInput = document.getElementById('colorInput');
 
-console.log(id);
-console.log(color);
+console.log(idInput);
+console.log(colorInput);
 ```
 
 </details>
@@ -136,14 +136,14 @@ In this step, we will target each card using the input fields that we created.
 <code>Detailed Instructions</code>
 </summary>
 
-- Inside of `index.html` we need to assign an id to each `section` inside of the `main` tag. The id's should match the suite, that each section is displaying.
+- Inside of `index.html` we need to assign an id to each `section` inside of the `main` tag. The id's should match the suit that each section is displaying.
   - The first one should have an id of `diamonds`, second `clubs`, third `hearts`, fourth `spades`.
-- Create a `button` under the `input`s. The button should be given two properties, and id of `btn`, and an `onClick` equal ot `setCard()`. We have not made that function yet, but we will.
+- Create a `button` under the `input`s. The button should be given two properties, an id of `btn`, and an `onclick` equal to `setCard()`. We have not made that function yet, but we will.
 - Inside of `index.js` we need to create a function called `setCard`. This function will not take in any parameters.
   - We are going to use `getElementById` and `idInput.value` to select the element we want.
-  - `idInput.value` is equal to what ever the user has typed into the input, at the time of the button click. Its type is a string, so we can pass it into the `getElementById()` as the argument since it also expects a string. store the result into a variable called `card`.
-  - Provided the user typed in the id correctly it should return the element with the correct id. Lets `console.log(card)` the results so we can make sure its working properly.
-  - Now type in a card suite into the first input and click the button. You should see a `console.log` of the correct element.
+  - `idInput.value` is equal to whatever the user has typed into the input at the time of the button click. Its type is a string, so we can pass it into the `getElementById()` as the argument since it also expects a string. Store the result into a variable called `card`.
+  - Provided the user typed in the id correctly it should return the element with the correct id. Lets `console.log(card)` so we can make sure its working properly.
+  - Now, type in a card suit into the first input and click the button. You should see a `console.log` of the correct element.
 
 </details>
 
@@ -210,7 +210,7 @@ In this step, we will create a poker hand of 4 of a kind.
 </summary>
 
 - The final thing we are going to do is apply a color to the section using the second input we have set up.
-- using `card.style.color` set it equal to `colorInput.value`, being what ever is typed into the second input.
+- Using `card.style.color` set it equal to `colorInput.value`, being whatever is typed into the second input.
 - If done properly the text and symbol should change colors appropriately.
 
 </details>
