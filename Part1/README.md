@@ -12,11 +12,13 @@ In this project, we will practice vanilla Javascript DOM manipulation by creatin
 
 In this step, we will create a Javascript file and connect it to our HTML file.
 
+_Note: Review the exisiting HTML so you are familiar with the structure you are interacting with_
+
 ### Instructions
 
 - Create a file called `index.js`.
 - Connect that script file to the HTML page.
-  - Feel free to `console.log` a message to test the connect from your script file.
+  - Feel free to `console.log` a message to test the connection from your script file.
 
 
 ### Solution
@@ -71,7 +73,7 @@ In this step, we will create a Javascript file and connect it to our HTML file.
 
 ### Summary
 
-In this step, we will reassign value of the "player" from X to O when the board is clicked.
+In this step, we will reassign value of the "player" from `X` to `O` when the board is clicked.
 
 ### Instructions
 - In index.js, create a function called `play`. We will be invoking this function any time one of 9 boxes are clicked. 
@@ -84,7 +86,7 @@ In this step, we will reassign value of the "player" from X to O when the board 
 </summary>
 
   - The first thing that we will want to do inside our `index.js` file is to make a function called `play`. This function will not take in any parameters.
-  - Inside the `play` function we need to get the element in the html doc that displays who's turn it currently is. Notice that in the HTML file there is a span surrounding an X with an id of `player`.
+  - Inside the `play` function we need to get the element in the html document that displays who's turn it currently is. Notice that in the HTML file there is a span surrounding an X with an id of `player`.
     - To select the span we will need to use `document.getElementById('player')` and store it in a variable called `playerSpan` so we can reference it later in the function.
   - Now that we have selected the span and stored it to a variable we need to toggle the text inside the html to be either `X` or `O`.
     - To do this we need to write an if statement that checks if the `playerSpan.innerText` is `===` to `X`.
@@ -118,7 +120,7 @@ function play() {
 
 ### Summary
 
-In this step, we will put either an X or an O as the content of the square that is clicked.
+In this step, we will put either an `X` or an `O` as the content of the square that is clicked.
 
 ### Instructions
 - Open `index.js`
@@ -169,11 +171,11 @@ In this step, we will create an array that will keep track of the game's progres
 
 ### Instructions
 
-- Create a variable at the top of the document, outside the `play` function that is equal to an empty array.
+- Create a variable at the top of the document, outside the `play` function, that is equal to an empty array.
 - In the `play` function, add the current player's value (`X` or `O`) to the array we defined above at the index of `clickedId`. 
     - ex. If the top left square was clicked by player `X`, we would expect `X` to be added to the array at index 0.
     - ex. If the very center square was clicked by player `O`, we would expect `O` to be added to the array at index 4.
-- Console.log the array in your function to keep track of it's current value.
+- `console.log` the array in your function to keep track of it's current value.
 
 <details>
 <summary>
@@ -223,9 +225,9 @@ In this step, we will complete the logic that will determine if there is a winne
 
 ### Instructions
 
-- You will need to determine if there is a winner, and display the winning player to the screen using window.alert.
-    - There are many different ways to accomplish this task. I encourage you to think through and write out each step that is needed as an outline.
-    - This most strait forward approach is to check every possible winning combination.
+- You will need to determine if there is a winner, and display the winning player to the screen using `window.alert`.
+    - There are many different ways to accomplish this task. Think through and write out each step that is needed as an outline.
+    - This most straightforward approach is to check every possible winning combination.
 - If there is no winner and the board is filled with all 9 spots taken up then alert that the game was a "CAT's" game.
 
 
