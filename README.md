@@ -5,6 +5,17 @@ There are 2 parts to this assignment. In Part 1, you will create a Tic Tac Toe b
 
 Fork and clone this repository and open the folder in your code editor. You can use live-server to see real-time changes from your code in the browser.
 
+## Resources
+
+<details>
+
+<summary> <code> HTML Document </code> </summary>
+
+* [HTML Document Object](https://www.w3schools.com/js/js_htmldom_document.asp)
+
+</details>
+
+
 ## Contributions
 
 If you see a problem or a typo, please fork, make the necessary changes, and create a pull request so we can review your changes and merge them into the master repo and branch.
