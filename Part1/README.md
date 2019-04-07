@@ -17,8 +17,8 @@ _Note: Review the exisiting HTML so you are familiar with the structure you are 
 ### Instructions
 
 - Create a file in the `Part1` directory called `index.js`.
-- Connect that script file to the HTML page.
-  - Feel free to `console.log` a message to test the connection from your script file.
+- Add a `script` tag at the bottom of the `body` tag and connect the `index.js` file we just created.
+  - `console.log` a message to test the connection from your script file.
 
 
 ### Solution
