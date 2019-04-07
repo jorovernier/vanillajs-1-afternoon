@@ -16,7 +16,7 @@ _Note: Review the exisiting HTML so you are familiar with the structure you are 
 
 ### Instructions
 
-- Create a file called `index.js`.
+- Create a file in the `Part1` directory called `index.js`.
 - Connect that script file to the HTML page.
   - Feel free to `console.log` a message to test the connection from your script file.
 
@@ -73,12 +73,12 @@ _Note: Review the exisiting HTML so you are familiar with the structure you are 
 
 ### Summary
 
-In this step, we will reassign value of the "player" from `X` to `O` when the board is clicked.
+In this step, we will reassign value of the `player` from `X` to `O` when the board is clicked. This will occur after a `player` has clicked the board to take their turn and it is then the next players turn.
 
 ### Instructions
 - In index.js, create a function called `play`. We will be invoking this function any time one of 9 boxes are clicked. 
 - In the `play` function, using 'getElementById', select the span in the html with the id of `player`. 
-- Every time this function runs we will want to toggle the `X` to a `O` or vise versa.
+- Every time this function runs we will want to toggle the `X` to a `O` or vise versa to signify the next player's turn.
 
 <details>
 <summary>
